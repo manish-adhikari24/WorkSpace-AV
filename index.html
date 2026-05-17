@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Workspace AV — Premium audio-visual solutions for modern meeting rooms, boardrooms, huddle spaces, and hybrid workplaces across Australia." />
+  <meta name="theme-color" content="#05070e" />
+  <title>Workspace AV — Sound · Vision · Control</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     AMBIENT AUDIO
+     Place file at: /assets/audio/workspace-ambient.mp3
+     Recommended: soft 30-120s loopable ambient/tech tone
+     ============================================================ -->
+<audio id="ambient-audio" src="assets/audio/workspace-ambient.mp3" preload="none" loop></audio>
+
+<!-- ============================================================
+     INTRO / SPLASH SCREEN
+     ============================================================ -->
+<div id="intro-screen" role="dialog" aria-modal="true" aria-label="Workspace AV — Start Experience">
+  <canvas id="intro-canvas" aria-hidden="true"></canvas>
+
+  <!-- Wave bars (filled by JS) -->
+  <div class="intro-waves" id="intro-waves" aria-hidden="true"></div>
+
+  <div class="intro-content">
+    <div class="intro-logo" aria-label="Workspace AV">
+      <span class="wordmark">Workspace AV</span>
+      <span class="tagline">Sound &bull; Vision &bull; Control</span>
+    </div>
+
+    <h1 class="intro-headline">
+      Enter the Future of<br />
+      <span class="text-gradient">Workplace Collaboration</span>
+    </h1>
+
+    <p class="intro-sub">
+      Immersive audio-visual systems for smarter meeting rooms,
+      boardrooms, huddle spaces, and hybrid workplaces.
+    </p>
+
+    <div class="intro-actions">
+      <button id="btn-start-exp" class="btn btn-primary btn-lg" aria-label="Start the Workspace Experience">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+        Start Experience
+      </button>
+      <button id="btn-skip" class="btn btn-ghost btn-lg" aria-label="Skip intro and go directly to site">
+        Skip Intro
+      </button>
+    </div>
+
+    <p class="intro-sound-note" aria-live="polite">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      </svg>
+      Sound available — you can turn it off anytime.
+    </p>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN SITE (revealed after intro)
+     ============================================================ -->
+<div id="main-site">
+
+  <!-- SOUND TOGGLE BUTTON -->
+  <button id="sound-btn" class="sound-off" aria-label="Toggle ambient sound" title="Toggle ambient sound">
+    <!-- Sound ON icon -->
+    <svg class="icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+      <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+    <!-- Sound OFF icon -->
+    <svg class="icon-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+      <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+  </button>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Workspace AV home">
+        <span>Workspace AV</span>
+        <span>Sound &bull; Vision &bull; Control</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#workspace-modes">Modes</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#trust">About</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Book Consultation</a>
+      <button class="nav-hamburger" aria-label="Toggle mobile menu" id="nav-hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section id="hero" aria-label="Hero">
+    <!-- Decorative orbs -->
+    <div class="orb orb-blue"  style="width:600px;height:600px;top:-150px;right:-200px;"></div>
+    <div class="orb orb-vi"    style="width:400px;height:400px;bottom:-100px;left:-150px;"></div>
+
+    <div class="container section-inner">
+      <div class="hero-inner">
+
+        <!-- Copy -->
+        <div class="hero-copy reveal-left">
+          <div class="hero-eyebrow">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label-tag">Workspace AV — Australia</span>
+          </div>
+          <h1 class="hero-h1 display-xl">
+            Transform Every<br />
+            <span class="text-gradient">Meeting Room</span><br />
+            Into a Seamless<br />Collaboration Space
+          </h1>
+          <p class="hero-sub">
+            Workspace AV designs intelligent audio-visual solutions that
+            make workplace communication clearer, simpler, and more connected.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary btn-lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.6 4.87C1.6 3.83 2.4 3 3.44 3H6.44a2 2 0 0 1 2 1.72c.13.93.36 1.84.69 2.72a2 2 0 0 1-.45 2.11L7.73 10.5a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.88.33 1.79.56 2.72.69A2 2 0 0 1 21.28 18z"/></svg>
+              Book a Consultation
+            </a>
+            <a href="#solutions" class="btn btn-ghost btn-lg">
+              Explore Solutions
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual — AV Room Diagram -->
+        <div class="hero-visual reveal-right">
+          <div class="room-diagram">
+
+            <!-- SVG connection lines -->
+            <svg class="room-connections" viewBox="0 0 460 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Central hub lines with animation -->
+              <defs>
+                <filter id="glow-f">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <!-- Lines from display to others -->
+              <line x1="230" y1="100" x2="100" y2="200" stroke="rgba(14,165,233,0.3)" stroke-width="1" stroke-dasharray="4 4">
+                <animate attributeName="stroke-dashoffset" from="8" to="0" dur="1.5s" repeatCount="indefinite"/>
+              </line>
+              <line x1="230" y1="100" x2="360" y2="200" stroke="rgba(6,214,214,0.3)" stroke-width="1" stroke-dasharray="4 4">
+                <animate attributeName="stroke-dashoffset" from="0" to="8" dur="1.8s" repeatCount="indefinite"/>
+              </line>
+              <line x1="100" y1="200" x2="100" y2="330" stroke="rgba(139,92,246,0.25)" stroke-width="1" stroke-dasharray="4 4">
+                <animate attributeName="stroke-dashoffset" from="8" to="0" dur="2s" repeatCount="indefinite"/>
+              </line>
+              <line x1="360" y1="200" x2="360" y2="330" stroke="rgba(14,165,233,0.25)" stroke-width="1" stroke-dasharray="4 4">
+                <animate attributeName="stroke-dashoffset" from="0" to="8" dur="2.2s" repeatCount="indefinite"/>
+              </line>
+              <line x1="230" y1="340" x2="100" y2="330" stroke="rgba(6,214,214,0.2)" stroke-width="1" stroke-dasharray="4 4">
+                <animate attributeName="stroke-dashoffset" from="8" to="0" dur="1.7s" repeatCount="indefinite"/>
+              </line>
+              <line x1="230" y1="340" x2="360" y2="330" stroke="rgba(14,165,233,0.2)" stroke-width="1" stroke-dasharray="4 4">
+                <animate attributeName="stroke-dashoffset" from="0" to="8" dur="2.1s" repeatCount="indefinite"/>
+              </line>
+              <!-- Central pulse dot -->
+              <circle cx="230" cy="260" r="4" fill="rgba(6,214,214,0.8)" filter="url(#glow-f)">
+                <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Radial lines from center -->
+              <line x1="230" y1="260" x2="230" y2="100" stroke="rgba(14,165,233,0.2)" stroke-width="1"/>
+              <line x1="230" y1="260" x2="100" y2="200" stroke="rgba(14,165,233,0.15)" stroke-width="1"/>
+              <line x1="230" y1="260" x2="360" y2="200" stroke="rgba(14,165,233,0.15)" stroke-width="1"/>
+              <line x1="230" y1="260" x2="100" y2="330" stroke="rgba(14,165,233,0.15)" stroke-width="1"/>
+              <line x1="230" y1="260" x2="360" y2="330" stroke="rgba(14,165,233,0.15)" stroke-width="1"/>
+              <line x1="230" y1="260" x2="230" y2="400" stroke="rgba(14,165,233,0.15)" stroke-width="1"/>
+            </svg>
+
+            <!-- AV Devices — positioned absolutely -->
+
+            <!-- Display / Screen (top-center) -->
+            <div class="av-device" style="top:50px;left:50%;transform:translateX(-50%);animation-delay:0s;">
+              <div class="av-device-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <span class="av-device-label">Display</span>
+            </div>
+
+            <!-- Camera (top-left) -->
+            <div class="av-device" style="top:165px;left:60px;animation-delay:0.4s;">
+              <div class="av-device-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 7 16 12l7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              </div>
+              <span class="av-device-label">Camera</span>
+            </div>
+
+            <!-- Speaker (top-right) -->
+            <div class="av-device" style="top:165px;right:60px;animation-delay:0.6s;">
+              <div class="av-device-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </div>
+              <span class="av-device-label">Speaker</span>
+            </div>
+
+            <!-- Microphone (mid-left) -->
+            <div class="av-device" style="top:300px;left:60px;animation-delay:0.8s;">
+              <div class="av-device-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </div>
+              <span class="av-device-label">Microphone</span>
+            </div>
+
+            <!-- Control Panel (mid-right) -->
+            <div class="av-device" style="top:300px;right:55px;animation-delay:1s;">
+              <div class="av-device-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <span class="av-device-label">Control</span>
+            </div>
+
+            <!-- Room Booking (bottom-center) -->
+            <div class="av-device" style="bottom:50px;left:50%;transform:translateX(-50%);animation-delay:0.3s;">
+              <div class="av-device-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <span class="av-device-label">Scheduling</span>
+            </div>
+
+          </div><!-- /room-diagram -->
+
+          <!-- Floating micro labels -->
+          <div class="room-label" style="top:14px;left:10px;animation-delay:0.2s;">Clear Audio</div>
+          <div class="room-label" style="top:14px;right:10px;animation-delay:0.5s;">Sharp Video</div>
+          <div class="room-label" style="bottom:14px;left:10px;animation-delay:0.8s;">One-Touch Control</div>
+          <div class="room-label" style="bottom:14px;right:10px;animation-delay:1.1s;">Hybrid Ready</div>
+
+        </div><!-- /hero-visual -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROBLEM SECTION
+       ============================================================ -->
+  <section id="problems" class="section bg-grid" aria-labelledby="problems-title">
+    <div class="container section-inner">
+      <div class="problems-header reveal">
+        <span class="label-tag">The Problem</span>
+        <div class="glow-line"></div>
+        <h2 id="problems-title" class="display-lg">
+          Your Meeting Room Shouldn't<br />
+          <span class="text-gradient">Slow Your Team Down</span>
+        </h2>
+        <p style="color:var(--silver);margin-top:1rem;font-size:1.05rem;max-width:600px;margin-left:auto;margin-right:auto;">
+          Most offices are dealing with the same frustrating technology problems every single day.
+        </p>
+      </div>
+
+      <div class="problems-grid">
+        <!-- Problem 1 -->
+        <div class="problem-card reveal delay-1">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          </div>
+          <h4>Poor Audio Clarity</h4>
+          <p>Participants can't hear each other clearly, leading to repeated questions and miscommunication.</p>
+        </div>
+        <!-- Problem 2 -->
+        <div class="problem-card reveal delay-2">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 7 16 12l7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </div>
+          <h4>Unreliable Video Calls</h4>
+          <p>Video conferencing drops, freezes, or fails to connect — killing momentum and trust.</p>
+        </div>
+        <!-- Problem 3 -->
+        <div class="problem-card reveal delay-3">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <h4>Wasted Connection Time</h4>
+          <p>Staff spend 5–10 minutes every meeting just trying to connect laptops, cables, and screens.</p>
+        </div>
+        <!-- Problem 4 -->
+        <div class="problem-card reveal delay-4">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <h4>Cable Clutter & Mess</h4>
+          <p>Tangled cables, adapters everywhere, and messy tables undermine professional environments.</p>
+        </div>
+        <!-- Problem 5 -->
+        <div class="problem-card reveal delay-1">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <h4>Confusing Controls</h4>
+          <p>Multiple remotes, apps, and inputs nobody understands. Technology that intimidates rather than empowers.</p>
+        </div>
+        <!-- Problem 6 -->
+        <div class="problem-card reveal delay-2">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+          </div>
+          <h4>Outdated Screens & Cameras</h4>
+          <p>Blurry cameras and dim screens make presentations look unprofessional and hard to follow.</p>
+        </div>
+        <!-- Problem 7 -->
+        <div class="problem-card reveal delay-3">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/></svg>
+          </div>
+          <h4>No Room Scheduling</h4>
+          <p>Rooms are double-booked, unavailable when you need them, or not visible to the team.</p>
+        </div>
+        <!-- Problem 8 -->
+        <div class="problem-card reveal delay-4">
+          <div class="problem-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Disconnected Hybrid Teams</h4>
+          <p>Remote and in-room participants feel like they're in separate meetings — not one unified team.</p>
+        </div>
+      </div>
+
+      <!-- Transform Banner -->
+      <div class="transform-banner reveal" style="margin-top:3rem;">
+        <div>
+          <h3>Workspace AV transforms these frustrations<br />into seamless, effortless experiences.</h3>
+          <p>Every system we design is built to work first time, every time.</p>
+        </div>
+        <a href="#solutions" class="btn btn-primary">
+          See Our Approach
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOLUTION SECTION — Sound / Vision / Control
+       ============================================================ -->
+  <section id="solutions" class="section" aria-labelledby="solutions-title">
+    <div class="orb orb-cyan" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);" aria-hidden="true"></div>
+    <div class="container section-inner">
+      <div class="solutions-header reveal">
+        <span class="label-tag">Our Philosophy</span>
+        <div class="glow-line"></div>
+        <h2 id="solutions-title" class="display-lg">
+          Designed for Sound.<br />
+          Built for Vision.<br />
+          <span class="text-gradient">Controlled with Ease.</span>
+        </h2>
+      </div>
+
+      <div class="pillars-grid">
+        <!-- Sound -->
+        <div class="pillar-card reveal delay-1">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </div>
+          <div class="pillar-word">Sound</div>
+          <h4>Every voice, heard clearly.</h4>
+          <p>
+            We design and install microphone arrays, ceiling mics, speaker systems,
+            and DSP processors that ensure every person in the room — and on screen —
+            is heard with crystal clarity.
+          </p>
+          <!-- Sound wave visualiser -->
+          <div class="wave-vis" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="pillar-accent-line"></div>
+        </div>
+
+        <!-- Vision -->
+        <div class="pillar-card reveal delay-2">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="pillar-word">Vision</div>
+          <h4>See everything. Miss nothing.</h4>
+          <p>
+            Premium displays, 4K cameras, digital signage, and presentation systems
+            that make your content, your team, and your brand look exceptional in
+            every space.
+          </p>
+          <div class="wave-vis" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="pillar-accent-line"></div>
+        </div>
+
+        <!-- Control -->
+        <div class="pillar-card reveal delay-3">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+          </div>
+          <div class="pillar-word">Control</div>
+          <h4>Simple. Intuitive. Reliable.</h4>
+          <p>
+            One-touch control panels, room automation, scheduling displays, and
+            seamlessly integrated interfaces that make the entire system effortless
+            for any team member.
+          </p>
+          <div class="wave-vis" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="pillar-accent-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WORKSPACE MODE SELECTOR
+       ============================================================ -->
+  <section id="workspace-modes" class="section bg-dots" aria-labelledby="modes-title">
+    <div class="container section-inner">
+      <div class="modes-header reveal">
+        <span class="label-tag">Workspace Environments</span>
+        <div class="glow-line"></div>
+        <h2 id="modes-title" class="display-lg">
+          Choose Your<br /><span class="text-gradient">Workspace Mode</span>
+        </h2>
+        <p style="color:var(--silver);margin-top:1rem;font-size:1.05rem;">
+          Every space has different demands. Workspace AV designs for all of them.
+        </p>
+      </div>
+
+      <!-- Mode Tabs -->
+      <div class="mode-tabs" role="tablist" aria-label="Workspace modes">
+        <button class="mode-tab active" data-mode="huddle" role="tab" aria-selected="true" aria-controls="mode-huddle">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          Huddle
+        </button>
+        <button class="mode-tab" data-mode="meeting" role="tab" aria-selected="false" aria-controls="mode-meeting">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Meeting Room
+        </button>
+        <button class="mode-tab" data-mode="boardroom" role="tab" aria-selected="false" aria-controls="mode-boardroom">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          Boardroom
+        </button>
+        <button class="mode-tab" data-mode="training" role="tab" aria-selected="false" aria-controls="mode-training">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Training
+        </button>
+        <button class="mode-tab" data-mode="signage" role="tab" aria-selected="false" aria-controls="mode-signage">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M7 21h10M12 17v4"/></svg>
+          Signage
+        </button>
+      </div>
+
+      <!-- Mode Panels -->
+      <div class="mode-panels">
+
+        <!-- HUDDLE -->
+        <div class="mode-panel active" id="mode-huddle" role="tabpanel" aria-labelledby="tab-huddle">
+          <div class="mode-visual reveal-left">
+            <div class="mode-visual-inner">
+              <div class="mode-visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+              </div>
+              <div class="mode-visual-name">Huddle Mode</div>
+              <div class="mode-visual-sub">Small team collaboration</div>
+            </div>
+          </div>
+          <div class="mode-copy reveal-right">
+            <span class="label-tag">Huddle Spaces</span>
+            <h3>Fast Ideas.<br />Minimal Clutter.</h3>
+            <p>
+              For small informal spaces where teams share ideas quickly.
+              Workspace AV creates clean, intuitive huddle environments that
+              are always ready to use — walk in, connect, collaborate, and walk out.
+            </p>
+            <ul class="mode-features">
+              <li>Compact all-in-one video bar (Teams / Zoom certified)</li>
+              <li>Wireless screen sharing — no cables</li>
+              <li>Single quality display, optimally positioned</li>
+              <li>Minimal cable management for clean aesthetics</li>
+              <li>Room scheduling panel at the door</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="margin-top:1.8rem;">
+              Design My Huddle Space
+            </a>
+          </div>
+        </div>
+
+        <!-- MEETING -->
+        <div class="mode-panel" id="mode-meeting" role="tabpanel">
+          <div class="mode-visual reveal-left">
+            <div class="mode-visual-inner">
+              <div class="mode-visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div class="mode-visual-name">Meeting Mode</div>
+              <div class="mode-visual-sub">Everyday collaboration</div>
+            </div>
+          </div>
+          <div class="mode-copy reveal-right">
+            <span class="label-tag">Meeting Spaces</span>
+            <h3>Productive Meetings.<br />Every Time.</h3>
+            <p>
+              For everyday meeting rooms that need reliable video conferencing,
+              wireless presentation, audio clarity, and seamless room scheduling.
+              Built for hybrid teams and in-room presentations alike.
+            </p>
+            <ul class="mode-features">
+              <li>High-quality 4K conference camera</li>
+              <li>Ceiling or table microphone array</li>
+              <li>Dual display setup for content + video</li>
+              <li>Wireless presentation (AirPlay / Miracast / BYOD)</li>
+              <li>Integrated room scheduling panel</li>
+              <li>One-touch meeting start</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="margin-top:1.8rem;">
+              Design My Meeting Room
+            </a>
+          </div>
+        </div>
+
+        <!-- BOARDROOM -->
+        <div class="mode-panel" id="mode-boardroom" role="tabpanel">
+          <div class="mode-visual reveal-left">
+            <div class="mode-visual-inner">
+              <div class="mode-visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+              </div>
+              <div class="mode-visual-name">Boardroom Mode</div>
+              <div class="mode-visual-sub">Executive excellence</div>
+            </div>
+          </div>
+          <div class="mode-copy reveal-right">
+            <span class="label-tag">Boardrooms</span>
+            <h3>Executive Spaces.<br />Premium Performance.</h3>
+            <p>
+              For executive spaces where first impressions matter and performance
+              cannot be compromised. Premium cameras, distributed audio, multiple
+              displays, and seamless integration with your collaboration platform.
+            </p>
+            <ul class="mode-features">
+              <li>PTZ premium cameras with auto-framing</li>
+              <li>Distributed speaker arrays for even coverage</li>
+              <li>Multi-display video wall or large format screens</li>
+              <li>Elegant one-touch control panel or iPad integration</li>
+              <li>Lighting and blind control automation</li>
+              <li>Premium cable-free presenter experience</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="margin-top:1.8rem;">
+              Design My Boardroom
+            </a>
+          </div>
+        </div>
+
+        <!-- TRAINING -->
+        <div class="mode-panel" id="mode-training" role="tabpanel">
+          <div class="mode-visual reveal-left">
+            <div class="mode-visual-inner">
+              <div class="mode-visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <div class="mode-visual-name">Training Mode</div>
+              <div class="mode-visual-sub">Multi-use flexibility</div>
+            </div>
+          </div>
+          <div class="mode-copy reveal-right">
+            <span class="label-tag">Multi-use Spaces</span>
+            <h3>Flexible Spaces.<br />Limitless Use.</h3>
+            <p>
+              For multi-use spaces used for presentations, training sessions,
+              online meetings, and webinar recording. Designed to adapt to
+              different group sizes, setups, and use cases effortlessly.
+            </p>
+            <ul class="mode-features">
+              <li>Large display or dual projection system</li>
+              <li>Distributed room audio for clear speech</li>
+              <li>Camera for recording, streaming, or conferencing</li>
+              <li>Wireless presenting from multiple sources</li>
+              <li>AV routing for flexible room configurations</li>
+              <li>Optional lecture capture and webinar integration</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="margin-top:1.8rem;">
+              Design My Training Space
+            </a>
+          </div>
+        </div>
+
+        <!-- SIGNAGE -->
+        <div class="mode-panel" id="mode-signage" role="tabpanel">
+          <div class="mode-visual reveal-left">
+            <div class="mode-visual-inner">
+              <div class="mode-visual-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M7 21h10M12 17v4"/></svg>
+              </div>
+              <div class="mode-visual-name">Signage Mode</div>
+              <div class="mode-visual-sub">Impactful visual communication</div>
+            </div>
+          </div>
+          <div class="mode-copy reveal-right">
+            <span class="label-tag">Digital Signage</span>
+            <h3>Your Brand.<br />Always On Display.</h3>
+            <p>
+              From reception media walls to internal communication screens and
+              wayfinding displays. Workspace AV designs and installs digital
+              signage systems that make a powerful visual impression.
+            </p>
+            <ul class="mode-features">
+              <li>Commercial-grade displays (portrait or landscape)</li>
+              <li>Media wall and video wall configurations</li>
+              <li>Cloud-based content management system</li>
+              <li>Reception, foyer, and lobby installations</li>
+              <li>Internal communication and HR messaging</li>
+              <li>Branding, campaigns, and way-finding</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary" style="margin-top:1.8rem;">
+              Design My Signage System
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /mode-panels -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES SECTION
+       ============================================================ -->
+  <section id="services" class="section" aria-labelledby="services-title">
+    <div class="container section-inner">
+      <div class="section-header centered reveal">
+        <span class="label-tag">What We Do</span>
+        <div class="glow-line"></div>
+        <h2 id="services-title" class="display-lg">
+          End-to-End AV<br />
+          <span class="text-gradient">Solutions & Services</span>
+        </h2>
+        <p>From strategy and design through to installation, training, and ongoing support.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h4>Consultation &amp; Strategy</h4>
+          <p>Expert advice, ideation, planning, and AV strategy to understand your goals, past challenges, and future requirements.</p>
+          <span class="service-cta">
+            View solution
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Meeting Spaces</h4>
+          <p>High-performance video conferencing, wireless presentation, screen sharing, audio clarity, and room scheduling for productive hybrid meetings.</p>
+          <span class="service-cta">
+            View solution
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+        <div class="service-card reveal delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </div>
+          <h4>Boardrooms</h4>
+          <p>Premium boardroom AV systems designed so that everyone can be clearly seen, heard, and connected — from any seat in the room.</p>
+          <span class="service-cta">
+            View solution
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+        <div class="service-card reveal delay-4">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+          </div>
+          <h4>Huddle Spaces</h4>
+          <p>Minimal-clutter collaboration spaces built for fast ideas, screen sharing, video meetings, and easy connectivity. Always ready, always reliable.</p>
+          <span class="service-cta">
+            View solution
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h4>Multi-use Spaces</h4>
+          <p>Flexible presentation and collaboration environments designed for training, webinars, town halls, multi-group meetings, and recording.</p>
+          <span class="service-cta">
+            View solution
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h4>Room &amp; Resource Scheduling</h4>
+          <p>Purpose-built scheduling panels that sync with Microsoft 365, Google Workspace, and other calendars — giving your team instant visibility over every space.</p>
+          <span class="service-cta">
+            View solution
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+        <div class="service-card reveal delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M7 21h10M12 17v4"/></svg>
+          </div>
+          <h4>Digital Signage</h4>
+          <p>Impactful media walls and display systems for internal communication, branding, reception spaces, wayfinding, and digital campaigns.</p>
+          <span class="service-cta">
+            View solution
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+        <div class="service-card reveal delay-4">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h4>Support &amp; Maintenance</h4>
+          <p>Ongoing technical support, remote management, system health monitoring, and training to keep every workspace performing at its best.</p>
+          <span class="service-cta">
+            View solution
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS SECTION
+       ============================================================ -->
+  <section id="stats" aria-label="Key facts">
+    <div class="container section-inner">
+      <div class="stats-grid reveal">
+
+        <div class="stat-item">
+          <span class="stat-value" data-counter="100" data-suffix="%" aria-label="100 percent">100%</span>
+          <span class="stat-label">Tailored AV Design</span>
+          <span class="stat-sub">No two spaces the same</span>
+        </div>
+
+        <div class="stat-item">
+          <span class="stat-value" aria-label="Australia-wide">AU</span>
+          <span class="stat-label">Nationwide Service</span>
+          <span class="stat-sub">Corporate • Public • Education</span>
+        </div>
+
+        <div class="stat-item">
+          <span class="stat-value" data-counter="5" data-suffix="+" aria-label="5 plus">5+</span>
+          <span class="stat-label">Workspace Types</span>
+          <span class="stat-sub">Huddle to boardroom</span>
+        </div>
+
+        <div class="stat-item">
+          <span class="stat-value" aria-label="End to end">E2E</span>
+          <span class="stat-label">End-to-End Delivery</span>
+          <span class="stat-sub">Design to support</span>
+        </div>
+
+        <div class="stat-item">
+          <span class="stat-value" aria-label="Sound Vision Control">S·V·C</span>
+          <span class="stat-label">Sound · Vision · Control</span>
+          <span class="stat-sub">Our core philosophy</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS SECTION
+       ============================================================ -->
+  <section id="process" class="section bg-grid" aria-labelledby="process-title">
+    <div class="container section-inner">
+      <div class="process-header reveal">
+        <span class="label-tag">How We Work</span>
+        <div class="glow-line"></div>
+        <h2 id="process-title" class="display-lg" style="max-width:600px;">
+          From First Conversation to<br />
+          <span class="text-gradient">Fully Connected Workspace</span>
+        </h2>
+      </div>
+
+      <div style="max-width:680px;">
+        <div class="process-timeline">
+          <div class="process-line" aria-hidden="true"></div>
+
+          <div class="process-step reveal delay-1">
+            <div class="step-num" aria-hidden="true">01</div>
+            <div class="step-content">
+              <h4>Discover</h4>
+              <p>We start by understanding your workspace, your people, your pain points, and your collaboration goals — with no assumptions and no off-the-shelf thinking.</p>
+            </div>
+          </div>
+
+          <div class="process-step reveal delay-2">
+            <div class="step-num" aria-hidden="true">02</div>
+            <div class="step-content">
+              <h4>Design</h4>
+              <p>We create a tailored AV solution focused on intuitive use, seamless integration with your existing tools, and a clean, professional aesthetic.</p>
+            </div>
+          </div>
+
+          <div class="process-step reveal delay-3">
+            <div class="step-num" aria-hidden="true">03</div>
+            <div class="step-content">
+              <h4>Integrate</h4>
+              <p>We supply, install, configure, and commission the right technology for your space — precisely, professionally, and on schedule.</p>
+            </div>
+          </div>
+
+          <div class="process-step reveal delay-4">
+            <div class="step-num" aria-hidden="true">04</div>
+            <div class="step-content">
+              <h4>Train</h4>
+              <p>We walk your team through the system in person so that everyone feels confident and capable from day one. No manuals required.</p>
+            </div>
+          </div>
+
+          <div class="process-step reveal delay-5">
+            <div class="step-num" aria-hidden="true">05</div>
+            <div class="step-content">
+              <h4>Support</h4>
+              <p>We provide ongoing technical support, remote monitoring, and responsive maintenance to keep the experience reliable, long after go-live.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY WORKSPACE AV
+       ============================================================ -->
+  <section id="trust" class="section" aria-labelledby="trust-title">
+    <div class="orb orb-blue" style="width:400px;height:400px;top:20%;right:-100px;" aria-hidden="true"></div>
+    <div class="container section-inner">
+      <div class="trust-header reveal">
+        <span class="label-tag">Why Choose Us</span>
+        <div class="glow-line"></div>
+        <h2 id="trust-title" class="display-lg">
+          Why Teams Choose<br />
+          <span class="text-gradient">Workspace AV</span>
+        </h2>
+      </div>
+
+      <div class="trust-grid">
+
+        <div class="trust-item reveal delay-1">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>Tailored AV Solutions</h5>
+            <p>Every system is designed specifically for your space, your users, and your workflows — never off the shelf.</p>
+          </div>
+        </div>
+
+        <div class="trust-item reveal delay-2">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>Australia-Wide Service</h5>
+            <p>We service clients across Australia, from head offices in Sydney to multi-site organisations nationwide.</p>
+          </div>
+        </div>
+
+        <div class="trust-item reveal delay-3">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>Corporate, Public &amp; Education</h5>
+            <p>Extensive experience across multiple sectors — we understand the unique demands of each environment.</p>
+          </div>
+        </div>
+
+        <div class="trust-item reveal delay-4">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>Intuitive User Experience</h5>
+            <p>Technology that works for everyone — not just IT staff. Simple, reliable, and effortless to operate.</p>
+          </div>
+        </div>
+
+        <div class="trust-item reveal delay-5">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>Seamless Integration</h5>
+            <p>We design systems that integrate cleanly with Microsoft 365, Google Workspace, Zoom, Teams, Cisco, and more.</p>
+          </div>
+        </div>
+
+        <div class="trust-item reveal delay-6">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>Quality Workmanship</h5>
+            <p>Every installation is executed to a high standard — clean cable management, precise mounting, and thorough commissioning.</p>
+          </div>
+        </div>
+
+        <div class="trust-item reveal delay-7">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>Long-term Client Relationships</h5>
+            <p>We build lasting partnerships, supporting our clients as their technology needs evolve over time.</p>
+          </div>
+        </div>
+
+        <div class="trust-item reveal delay-8">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>End-to-End Service</h5>
+            <p>From discovery and design through installation, training, and ongoing support — we manage the entire journey.</p>
+          </div>
+        </div>
+
+        <div class="trust-item reveal delay-1">
+          <div class="trust-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <div>
+            <h5>Global Brand Partnerships</h5>
+            <p>We work with industry-leading AV technology brands to deliver products proven to perform in demanding environments.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section id="testimonials" class="section" aria-labelledby="testimonials-title">
+    <div class="container section-inner">
+      <div class="testimonials-header reveal">
+        <span class="label-tag">Client Experiences</span>
+        <div class="glow-line"></div>
+        <h2 id="testimonials-title" class="display-lg">
+          Trusted by Organisations<br />
+          <span class="text-gradient">Across Australia</span>
+        </h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal delay-1">
+          <div class="star-rating" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "Workspace AV supported us from the tender stage through to installation and has continued to be reliable beyond go-live. Their team was knowledgeable, responsive, and genuinely committed to making the project a success."
+          </p>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">IT</div>
+            <div>
+              <div class="testimonial-name">IT Manager</div>
+              <div class="testimonial-role">Corporate Organisation, NSW</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal delay-2">
+          <div class="star-rating" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "We had confidence in Workspace AV from day one. They handled 15 AV rooms across our office fitout, including room scheduling panels, integrated lighting and blind control, full implementation, user training, and post-installation troubleshooting — all delivered professionally."
+          </p>
+          <div class="testimonial-meta">
+            <div class="testimonial-avatar" aria-hidden="true">FM</div>
+            <div>
+              <div class="testimonial-name">Facilities Manager</div>
+              <div class="testimonial-role">Multi-site Organisation, Australia</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT / BOOKING SECTION
+       ============================================================ -->
+  <section id="contact" class="section bg-dots" aria-labelledby="contact-title">
+    <div class="container section-inner">
+      <div class="contact-inner">
+
+        <!-- Left: Copy + Details -->
+        <div class="reveal-left">
+          <span class="label-tag">Get in Touch</span>
+          <div class="glow-line glow-line-left"></div>
+          <h2 id="contact-title" class="display-lg">
+            Ready to Upgrade<br />
+            <span class="text-gradient">Your Workspace?</span>
+          </h2>
+          <p class="contact-copy-text" style="color:var(--silver);margin:1rem 0 2rem;font-size:1rem;line-height:1.7;">
+            Tell us about your meeting space, boardroom, huddle room, training area,
+            or digital signage needs. Workspace AV will help you design the right
+            solution for your organisation.
+          </p>
+
+          <div class="contact-details">
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail-label">Head Office</div>
+                <div class="contact-detail-value">14/58 Box Road, Taren Point NSW 2229</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail-label">Email</div>
+                <div class="contact-detail-value">
+                  <a href="mailto:sales@workspaceav.com.au" style="color:var(--blue-light);">sales@workspaceav.com.au</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+              </div>
+              <div>
+                <div class="contact-detail-label">Office Hours</div>
+                <div class="contact-detail-value">Monday – Friday, 8:30am – 4:30pm</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal-right">
+          <form class="contact-form" id="contact-form" novalidate aria-label="Consultation request form">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-name">Full Name</label>
+                <input type="text" id="f-name" name="name" placeholder="" required />
+              </div>
+              <div class="form-group">
+                <label for="f-company">Company Name</label>
+                <input type="text" id="f-company" name="company" placeholder="" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-email">Email Address</label>
+                <input type="email" id="f-email" name="email" placeholder="" required />
+              </div>
+              <div class="form-group">
+                <label for="f-phone">Phone Number</label>
+                <input type="tel" id="f-phone" name="phone" placeholder="+61 x xxxx xxxx" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-space">Type of Space</label>
+                <select id="f-space" name="space">
+                  <option value="" disabled selected>Select space type…</option>
+                  <option>Meeting Room</option>
+                  <option>Boardroom</option>
+                  <option>Huddle Space</option>
+                  <option>Training Room</option>
+                  <option>Multi-use Space</option>
+                  <option>Digital Signage</option>
+                  <option>Room Scheduling</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="f-timeline">Project Timeline</label>
+                <select id="f-timeline" name="timeline">
+                  <option value="" disabled selected>Select timeline…</option>
+                  <option>ASAP</option>
+                  <option>Within 1 month</option>
+                  <option>1–3 months</option>
+                  <option>3–6 months</option>
+                  <option>6–12 months</option>
+                  <option>Planning stage</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="f-message">Tell us about your project</label>
+              <textarea id="f-message" name="message" placeholder="Describe your space, number of rooms, current challenges, and what you're hoping to achieve…"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="f-date">Preferred Consultation Date (optional)</label>
+              <input type="date" id="f-date" name="preferred_date" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit btn-lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+              Request Consultation
+            </button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <span class="wordmark">Workspace AV</span>
+          <span class="tagline">Sound &bull; Vision &bull; Control</span>
+          <p>
+            Premium audio-visual solutions for modern workplaces across Australia.
+            Helping organisations connect, collaborate, and communicate with clarity.
+          </p>
+          <a href="mailto:sales@workspaceav.com.au" class="footer-email">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            sales@workspaceav.com.au
+          </a>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#workspace-modes">Workspace Modes</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#trust">About</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#services">Meeting Spaces</a></li>
+            <li><a href="#services">Boardrooms</a></li>
+            <li><a href="#services">Huddle Spaces</a></li>
+            <li><a href="#services">Training Rooms</a></li>
+            <li><a href="#services">Room Scheduling</a></li>
+            <li><a href="#services">Digital Signage</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <p style="margin-bottom:0.6rem;">
+            14/58 Box Road<br />
+            Taren Point NSW 2229
+          </p>
+          <p>Mon–Fri, 8:30am–4:30pm</p>
+          <ul style="margin-top:0.8rem;">
+            <li><a href="#contact">Book a Consultation</a></li>
+            <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="footer-year"></span> Workspace AV Pty Ltd. All rights reserved.</p>
+        <p class="footer-abn">ABN 69 645 787 695</p>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /#main-site -->
+
+<!-- ============================================================
+     AI CHATBOX WIDGET
+     ============================================================ -->
+<div id="chat-widget" aria-label="Workspace AV AI Assistant">
+
+  <div id="chat-window" role="dialog" aria-modal="true" aria-label="Workspace AV Assistant chat window">
+    <div class="chat-header">
+      <div class="chat-avatar" aria-hidden="true">W</div>
+      <div class="chat-header-info">
+        <h6>Workspace AV Assistant</h6>
+        <span>
+          <span class="chat-online-dot" aria-hidden="true"></span>
+          Online — ready to help
+        </span>
+      </div>
+      <button id="chat-close" class="chat-close" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-label="Chat conversation">
+      <div class="chat-msg bot">
+        Hi, I'm the Workspace AV Assistant. Tell me about your space and I'll help you find the right AV solution.
+      </div>
+    </div>
+
+    <div class="chat-quick-prompts" aria-label="Quick questions">
+      <button class="quick-prompt">Upgrade my meeting room</button>
+      <button class="quick-prompt">I need boardroom AV</button>
+      <button class="quick-prompt">Help with room scheduling</button>
+      <button class="quick-prompt">Book a consultation</button>
+      <button class="quick-prompt">Show contact details</button>
+    </div>
+
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask about your workspace…" aria-label="Type your question" autocomplete="off" />
+      <button id="chat-send" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <button id="chat-toggle-btn" aria-label="Open Workspace AV Assistant chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="chat-pulse" aria-hidden="true"></span>
+  </button>
+
+</div>
+
+<!-- Footer year script -->
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>
